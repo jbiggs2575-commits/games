@@ -1,0 +1,566 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+:root {
+  color-scheme: dark;
+  font-family: "Space Grotesk", sans-serif;
+  color: #eef0e9;
+  background: #10151c;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --muted: #88919c;
+  --line: #2a323c;
+  --lime: #c8f169;
+  --orange: #ff875c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 50% 12%, rgb(38 51 59 / 48%), transparent 52%),
+    #10151c;
+}
+
+button {
+  font: inherit;
+}
+
+.shell {
+  width: min(100% - 48px, 920px);
+  margin: 0 auto;
+}
+
+.site-header,
+.brand,
+.game-picker,
+.game-tab,
+.game-heading,
+.game-footer,
+.page-footer,
+.scoreboard,
+.brick-stats,
+.scoreboard > div {
+  display: flex;
+  align-items: center;
+}
+
+.site-header {
+  justify-content: space-between;
+  min-height: 76px;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  gap: 10px;
+  color: #eef0e9;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+}
+
+.brand-mark {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border: 1px solid var(--lime);
+  color: var(--lime);
+  font-size: 16px;
+  transform: rotate(-6deg);
+}
+
+.brand-accent {
+  color: var(--lime);
+}
+
+.header-note,
+.eyebrow,
+.tab-number,
+.tab-detail,
+.score-label,
+.text-button,
+.page-footer,
+.pong-message {
+  font-family: "DM Mono", monospace;
+}
+
+.header-note,
+.page-footer {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+.intro {
+  padding: 66px 0 34px;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--lime);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin: 15px 0 12px;
+  font-size: clamp(42px, 7vw, 66px);
+  line-height: 0.99;
+  letter-spacing: -0.07em;
+}
+
+h1 span {
+  color: var(--lime);
+}
+
+.intro-copy {
+  margin-bottom: 0;
+  color: #a7afb7;
+  font-size: 15px;
+}
+
+.game-picker {
+  gap: 12px;
+  margin-bottom: 26px;
+}
+
+.game-tab {
+  flex: 1;
+  min-height: 74px;
+  gap: 12px;
+  padding: 14px 18px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  color: #a7afb7;
+  background: #151c24;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 140ms ease, background 140ms ease, color 140ms ease;
+}
+
+.game-tab:hover,
+.game-tab:focus-visible {
+  border-color: #66734c;
+  outline: none;
+}
+
+.game-tab.is-active {
+  border-color: var(--lime);
+  color: #eef0e9;
+  background: #1d2729;
+}
+
+.tab-number {
+  align-self: flex-start;
+  padding-top: 2px;
+  color: var(--lime);
+  font-size: 11px;
+}
+
+.tab-name {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.tab-detail {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+}
+
+.game-panel {
+  padding: 25px 28px 17px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #151c24;
+  box-shadow: 0 18px 70px rgb(0 0 0 / 15%);
+}
+
+.game-panel[hidden] {
+  display: none;
+}
+
+.game-heading {
+  justify-content: space-between;
+  min-height: 58px;
+  margin-bottom: 17px;
+}
+
+h2 {
+  margin: 5px 0 0;
+  font-size: 25px;
+  letter-spacing: -0.04em;
+}
+
+.scoreboard {
+  gap: 17px;
+}
+
+.scoreboard > div {
+  flex-direction: column;
+  gap: 1px;
+}
+
+.scoreboard strong {
+  font-size: 27px;
+  line-height: 1;
+}
+
+.score-label {
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.brick-stats {
+  gap: 20px;
+}
+
+.brick-stats > div {
+  display: flex;
+  min-width: 34px;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.brick-stats strong {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.score-divider {
+  padding-top: 10px;
+  color: #59636e;
+}
+
+.pong-frame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #303a45;
+  border-radius: 3px;
+  background: #0e141a;
+}
+
+#pong-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 800 / 440;
+}
+
+.pong-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid #3c4650;
+  border-radius: 3px;
+  color: #dce1dc;
+  background: rgb(16 21 28 / 88%);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.pong-message.is-hidden {
+  display: none;
+}
+
+.brick-frame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #303a45;
+  border-radius: 3px;
+  background: #0e141a;
+  touch-action: none;
+}
+
+#brick-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 800 / 520;
+  cursor: crosshair;
+}
+
+.brick-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: calc(100% - 24px);
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid #3c4650;
+  border-radius: 3px;
+  color: #dce1dc;
+  background: rgb(16 21 28 / 88%);
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  text-align: center;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.brick-message.is-hidden {
+  display: none;
+}
+
+.game-footer {
+  min-height: 48px;
+  justify-content: space-between;
+  color: #a7afb7;
+  font-size: 11px;
+}
+
+.game-footer p {
+  margin: 0;
+}
+
+.keycap {
+  display: inline-block;
+  min-width: 19px;
+  margin: 0 2px;
+  padding: 3px 4px;
+  border: 1px solid #3b4651;
+  border-radius: 3px;
+  color: #dfe4dd;
+  background: #202832;
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  text-align: center;
+}
+
+.control-copy {
+  margin-left: 7px;
+  color: var(--muted);
+}
+
+.text-button {
+  padding: 8px 0 8px 8px;
+  border: 0;
+  color: var(--lime);
+  background: transparent;
+  cursor: pointer;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+}
+
+.text-button:hover,
+.text-button:focus-visible {
+  color: #e2ffad;
+  outline: none;
+}
+
+.text-button span {
+  margin-left: 3px;
+}
+
+.turn-indicator {
+  margin: 0;
+  color: #a7afb7;
+  font-size: 12px;
+}
+
+.turn-mark {
+  color: var(--lime);
+  font-weight: 700;
+}
+
+.turn-mark.mark-o {
+  color: var(--orange);
+}
+
+.ttt-mode-picker {
+  display: flex;
+  width: fit-content;
+  gap: 4px;
+  margin: 3px auto 15px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #10171e;
+}
+
+.ttt-mode {
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 3px;
+  color: var(--muted);
+  background: transparent;
+  cursor: pointer;
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.04em;
+}
+
+.ttt-mode:hover,
+.ttt-mode:focus-visible {
+  color: #eef0e9;
+  outline: none;
+}
+
+.ttt-mode.is-active {
+  color: #10151c;
+  background: var(--lime);
+}
+
+.ttt-board {
+  display: grid;
+  width: min(100%, 390px);
+  aspect-ratio: 1;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  gap: 8px;
+  margin: 8px auto 15px;
+}
+
+.ttt-cell {
+  display: grid;
+  min-width: 0;
+  place-items: center;
+  border: 1px solid #303a45;
+  border-radius: 5px;
+  color: var(--lime);
+  background: #10171e;
+  cursor: pointer;
+  font-size: clamp(42px, 10vw, 78px);
+  font-weight: 600;
+  line-height: 1;
+  transition: border-color 140ms ease, background 140ms ease, transform 140ms ease;
+}
+
+.ttt-cell:not(:disabled):hover,
+.ttt-cell:focus-visible {
+  border-color: var(--lime);
+  background: #1a2526;
+  outline: none;
+}
+
+.ttt-cell:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.ttt-cell.mark-o {
+  color: var(--orange);
+}
+
+.ttt-cell.is-winner {
+  border-color: var(--lime);
+  background: #263322;
+}
+
+.ttt-cell:disabled {
+  cursor: default;
+}
+
+.footer-separator {
+  margin: 0 5px;
+  color: #59636e;
+}
+
+.page-footer {
+  justify-content: space-between;
+  padding: 24px 0 30px;
+  font-size: 9px;
+}
+
+.blink {
+  color: var(--lime);
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to { visibility: hidden; }
+}
+
+@media (max-width: 600px) {
+  .shell {
+    width: min(100% - 28px, 920px);
+  }
+
+  .header-note {
+    font-size: 8px;
+  }
+
+  .intro {
+    padding: 48px 0 27px;
+  }
+
+  .game-picker {
+    gap: 8px;
+  }
+
+  .game-tab {
+    min-height: 70px;
+    flex-wrap: wrap;
+    gap: 5px 9px;
+    padding: 11px;
+  }
+
+  .tab-number {
+    width: 21px;
+  }
+
+  .tab-name {
+    font-size: 13px;
+  }
+
+  .tab-detail {
+    width: 100%;
+    margin-left: 30px;
+    font-size: 8px;
+  }
+
+  .game-panel {
+    padding: 18px 14px 12px;
+  }
+
+  .game-footer {
+    align-items: flex-start;
+    gap: 10px;
+    padding-top: 12px;
+  }
+
+  .game-footer p {
+    max-width: 72%;
+    line-height: 1.8;
+  }
+
+  .ttt-mode {
+    padding: 8px 9px;
+    font-size: 8px;
+  }
+
+  .text-button {
+    white-space: nowrap;
+    font-size: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

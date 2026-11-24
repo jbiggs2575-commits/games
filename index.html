@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#10151c">
+    <title>Arcade Corner</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="games.js" defer></script>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="site-header">
+        <a class="brand" href="#" aria-label="Arcade Corner home">
+          <span class="brand-mark" aria-hidden="true">A</span>
+          <span>ARCADE<span class="brand-accent">CORNER</span></span>
+        </a>
+        <span class="header-note">THREE GAMES. ENDLESS REMATCHES.</span>
+      </header>
+
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">YOUR LITTLE CORNER OF THE ARCADE</p>
+        <h1 id="page-title">Pick a game.<br><span>Make your move.</span></h1>
+        <p class="intro-copy">A few classics, ready when you are.</p>
+      </section>
+
+      <nav class="game-picker" aria-label="Choose a game">
+        <button class="game-tab is-active" type="button" data-game="pong" aria-pressed="true">
+          <span class="tab-number">01</span>
+          <span class="tab-name">Pong</span>
+          <span class="tab-detail">VS. COMPUTER</span>
+        </button>
+        <button class="game-tab" type="button" data-game="tictactoe" aria-pressed="false">
+          <span class="tab-number">02</span>
+          <span class="tab-name">Tic-Tac-Toe</span>
+          <span class="tab-detail">VS. COMPUTER</span>
+        </button>
+        <button class="game-tab" type="button" data-game="brickbreaker" aria-pressed="false">
+          <span class="tab-number">03</span>
+          <span class="tab-name">Brick Breaker</span>
+          <span class="tab-detail">ARCADE</span>
+        </button>
+      </nav>
+
+      <section class="game-panel" id="pong-panel" aria-labelledby="pong-title">
+        <div class="game-heading">
+          <div>
+            <p class="eyebrow">01 / ARCADE CLASSIC</p>
+            <h2 id="pong-title">Pong</h2>
+          </div>
+          <div class="scoreboard" aria-label="Score">
+            <div><span class="score-label">YOU</span><strong id="player-score">0</strong></div>
+            <span class="score-divider" aria-hidden="true">:</span>
+            <div><span class="score-label">CPU</span><strong id="cpu-score">0</strong></div>
+          </div>
+        </div>
+        <div class="pong-frame">
+          <canvas id="pong-canvas" width="800" height="440" aria-label="Pong game. Move your paddle with W and S or the up and down arrow keys."></canvas>
+          <p class="pong-message" id="pong-message" aria-live="polite">Press any paddle key to serve</p>
+        </div>
+        <div class="game-footer">
+          <p><span class="keycap">W</span> <span class="keycap">S</span> or <span class="keycap">↑</span> <span class="keycap">↓</span><span class="control-copy">Move your paddle</span></p>
+          <button class="text-button" id="pong-reset" type="button">NEW GAME <span aria-hidden="true">↗</span></button>
+        </div>
+      </section>
+
+      <section class="game-panel" id="tictactoe-panel" aria-labelledby="tictactoe-title" hidden>
+        <div class="game-heading">
+          <div>
+            <p class="eyebrow">02 / QUICK THINKER</p>
+            <h2 id="tictactoe-title">Tic-Tac-Toe</h2>
+          </div>
+          <p class="turn-indicator" id="ttt-status" aria-live="polite"><span class="turn-mark">X</span> Your turn</p>
+        </div>
+        <div class="ttt-mode-picker" role="group" aria-label="Choose Tic-Tac-Toe mode">
+          <button class="ttt-mode is-active" type="button" data-mode="computer" aria-pressed="true">VS. COMPUTER</button>
+          <button class="ttt-mode" type="button" data-mode="two-player" aria-pressed="false">TWO PLAYERS</button>
+        </div>
+        <div class="ttt-board" role="group" aria-label="Tic-Tac-Toe board">
+          <button class="ttt-cell" type="button" data-cell="0" aria-label="Row 1, column 1, empty"></button>
+          <button class="ttt-cell" type="button" data-cell="1" aria-label="Row 1, column 2, empty"></button>
+          <button class="ttt-cell" type="button" data-cell="2" aria-label="Row 1, column 3, empty"></button>
+          <button class="ttt-cell" type="button" data-cell="3" aria-label="Row 2, column 1, empty"></button>
+          <button class="ttt-cell" type="button" data-cell="4" aria-label="Row 2, column 2, empty"></button>
+          <button class="ttt-cell" type="button" data-cell="5" aria-label="Row 2, column 3, empty"></button>
+          <button class="ttt-cell" type="button" data-cell="6" aria-label="Row 3, column 1, empty"></button>
+          <button class="ttt-cell" type="button" data-cell="7" aria-label="Row 3, column 2, empty"></button>
+          <button class="ttt-cell" type="button" data-cell="8" aria-label="Row 3, column 3, empty"></button>
+        </div>
+        <div class="game-footer">
+          <p id="ttt-help">You are X. The computer is O.</p>
+          <button class="text-button" id="ttt-reset" type="button">PLAY AGAIN <span aria-hidden="true">↗</span></button>
+        </div>
+      </section>
+
+      <section class="game-panel" id="brickbreaker-panel" aria-labelledby="brickbreaker-title" hidden>
+        <div class="game-heading">
+          <div>
+            <p class="eyebrow">03 / CLEAR THE WALL</p>
+            <h2 id="brickbreaker-title">Brick Breaker</h2>
+          </div>
+          <div class="brick-stats" aria-label="Game stats">
+            <div><span class="score-label">SCORE</span><strong id="brick-score">0</strong></div>
+            <div><span class="score-label">LIVES</span><strong id="brick-lives">3</strong></div>
+          </div>
+        </div>
+        <div class="brick-frame">
+          <canvas id="brick-canvas" width="800" height="520" aria-label="Brick Breaker game. Move the paddle with the left and right arrow keys or A and D, or move your mouse over the game. Press Space or click to launch the ball."></canvas>
+          <p class="brick-message" id="brick-message" aria-live="polite">Move your paddle, then press Space or click to launch</p>
+        </div>
+        <div class="game-footer">
+          <p><span class="keycap">←</span> <span class="keycap">→</span> or <span class="keycap">A</span> <span class="keycap">D</span><span class="control-copy">Move paddle · mouse works too</span></p>
+          <button class="text-button" id="brick-reset" type="button">NEW GAME <span aria-hidden="true">↗</span></button>
+        </div>
+      </section>
+
+      <footer class="page-footer">
+        <span>BUILT FOR THE LOVE OF PLAY</span>
+        <span>INSERT COIN <span class="blink" aria-hidden="true">_</span></span>
+      </footer>
+    </main>
+  </body>
+</html>
